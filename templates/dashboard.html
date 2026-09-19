@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Admin Dashboard</h2>
+<a href="{% url 'manage_products' %}" class="back-link">Manage Products →</a>
+<a href="{% url 'manage_categories' %}" class="back-link">Manage Categories →</a>
+
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <span class="stat-number">{{ total_orders }}</span>
+        <span class="stat-label">Total Orders</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">₹{{ total_revenue }}</span>
+        <span class="stat-label">Total Revenue</span>
+    </div>
+</div>
+
+<div class="orders-list">
+    {% for order in orders %}
+    <div class="order-card">
+        <div class="order-header">
+            <div>
+                <strong>Order #{{ order.id }} — {{ order.user.username }}</strong>
+                <span class="order-date">{{ order.created_at|date:"d M Y" }}</span>
+            </div>
+            <span class="order-status status-{{ order.status }}">{{ order.get_status_display }}</span>
+        </div>
+
+        <div class="order-items">
+            {% for item in order.items.all %}
+            <div class="order-item-row">
+                <span>{{ item.product_name }} x {{ item.quantity }}</span>
+                <span>₹{{ item.subtotal }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="order-footer">
+            <span>{{ order.address }}, {{ order.city }} · {{ order.get_payment_method_display }}</span>
+            <strong>Total: ₹{{ order.total_amount }}</strong>
+        </div>
+
+       <div class="dashboard-actions">
+           {% if order.status == 'pending' %}
+           <a href="{% url 'update_order_status' order.id 'confirmed' %}" class="dash-btn">Confirm</a>
+           {% endif %}
+           {% if order.status == 'confirmed' %}
+           <a href="{% url 'update_order_status' order.id 'shipped' %}" class="dash-btn">Ship</a>
+           {% endif %}
+           {% if order.status == 'shipped' %}
+           <a href="{% url 'update_order_status' order.id 'delivered' %}" class="dash-btn">Deliver</a>
+           {% endif %}
+           {% if order.status == 'return_requested' %}
+           <a href="{% url 'update_order_status' order.id 'returned' %}" class="dash-btn">Accept Return</a>
+           <a href="{% url 'update_order_status' order.id 'delivered' %}" class="dash-btn" style="background-color: #d9534f;">Reject Return</a>
+           {% endif %}
+           <a href="{% url 'delete_order' order.id %}" class="dash-btn" style="background-color: #6c757d;" onclick="return confirm('Are you sure you want to permanently delete this order?');">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

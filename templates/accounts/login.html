@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Cartly{% endblock %}
+
+{% block content %}
+<div class="auth-box">
+    <h2>Login to Cartly</h2>
+    {% if form.errors %}
+        <p style="color: red;">Invalid username or password. Please try again.</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="add-cart-btn">Login</button>
+    </form>
+    <p>New here? <a href="{% url 'register' %}">Create an account</a></p>
+</div>
+{% endblock %}

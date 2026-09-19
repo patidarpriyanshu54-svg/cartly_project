@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Cart - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Your Cart</h2>
+<a href="{% url 'home' %}" class="back-link">← Continue Shopping</a>
+{% if cart.items.all %}
+<div class="cart-table">
+    {% for item in cart.items.all %}
+    <div class="cart-row">
+        <div class="cart-product">
+            {% if item.product.image %}
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            {% endif %}
+            <div>
+                <h4>{{ item.product.name }}</h4>
+                <p>₹{{ item.product.price }} each</p>
+            </div>
+        </div>
+
+        <div class="cart-quantity">
+            <a href="{% url 'update_cart_quantity' item.id 'decrease' %}" class="qty-btn">−</a>
+            <span>{{ item.quantity }}</span>
+            <a href="{% url 'update_cart_quantity' item.id 'increase' %}" class="qty-btn">+</a>
+        </div>
+
+        <div class="cart-subtotal">
+            ₹{{ item.subtotal }}
+        </div>
+
+        <a href="{% url 'remove_from_cart' item.id %}" class="remove-link">Remove</a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="cart-total">
+    <h3>Total: ₹{{ cart.total_price }}</h3>
+    <a href="{% url 'checkout' %}" class="add-cart-btn detail-btn">Proceed to Checkout</a>
+</div>
+
+{% else %}
+<div class="empty-state">
+    <p class="empty-icon">🛒</p>
+    <h3>Your cart is empty</h3>
+    <p>Looks like you haven't added anything yet.</p>
+    <a href="{% url 'home' %}" class="add-cart-btn detail-btn">Start Shopping</a>
+</div>
+{% endif %}
+
+{% endblock %}

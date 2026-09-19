@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Products - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Manage Products</h2>
+<a href="{% url 'dashboard' %}" class="back-link">← Back to Dashboard</a>
+
+<div class="manage-table">
+    <div class="manage-row manage-header">
+        <span>Image</span>
+        <span>Name</span>
+        <span>Category</span>
+        <span>Price</span>
+        <span>Stock</span>
+        <span>Actions</span>
+    </div>
+    {% for product in products %}
+    <div class="manage-row">
+        <span>
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="manage-thumb">
+            {% else %}
+            <div class="manage-thumb-empty">No Img</div>
+            {% endif %}
+        </span>
+        <span>{{ product.name }}</span>
+        <span>{{ product.category.name }}</span>
+        <span>₹{{ product.price }}</span>
+        <span>{{ product.stock }}</span>
+        <span class="manage-actions">
+            <a href="{% url 'admin:products_product_change' product.id %}" class="dash-btn">Edit</a>
+            <a href="{% url 'delete_product' product.id %}" class="dash-btn" style="background-color: #d9534f;" onclick="return confirm('Delete this product permanently?');">Delete</a>
+        </span>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

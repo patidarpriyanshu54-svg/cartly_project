@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}My Wishlist - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">My Wishlist</h2>
+<a href="{% url 'home' %}" class="back-link">← Continue Shopping</a>
+
+{% if items %}
+<div class="product-grid">
+    {% for item in items %}
+    <div class="product-card">
+        <a href="{% url 'product_detail' item.product.slug %}" class="product-link">
+            {% if item.product.image %}
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            {% else %}
+            <div class="no-image">No Image</div>
+            {% endif %}
+            <h3>{{ item.product.name }}</h3>
+            <p class="price">₹{{ item.product.price }}</p>
+        </a>
+        <a href="{% url 'toggle_wishlist' item.product.id %}" class="remove-link">Remove from Wishlist</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <p class="empty-icon">💛</p>
+    <h3>Your wishlist is empty</h3>
+    <p>Save products you like to view them here later.</p>
+    <a href="{% url 'home' %}" class="add-cart-btn detail-btn">Start Shopping</a>
+</div>
+{% endif %}
+
+{% endblock %}

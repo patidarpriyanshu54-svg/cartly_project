@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Checkout</h2>
+
+<div class="checkout-wrapper">
+    <div class="checkout-form">
+        <h3>Shipping Details</h3>
+        {% if errors %}
+        <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-size: 14px;">
+            {% for error in errors %}
+            <p style="margin: 0;">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label>Full Name</label>
+            <input type="text" name="full_name" pattern="[A-Za-z ]+" title="Name should only contain letters and spaces" required>
+            
+            <label>Address</label>
+            <input type="text" name="address" required>
+
+            <label>City</label>
+            <input type="text" name="city" required>
+
+            <label>Pincode</label>
+            <input type="text" name="pincode" pattern="[0-9]{6}" maxlength="6" title="Pincode must be exactly 6 digits" required>
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" pattern="[6-9][0-9]{9}" maxlength="10" title="Enter a valid 10-digit Indian mobile number" required>
+
+            <label>Payment Method</label>
+            <div class="payment-options">
+                {% for value, label in payment_choices %}
+                <label class="payment-option">
+                   <input type="radio" name="payment_method" value="{{ value }}" {% if forloop.first %}checked{% endif %}>
+                   {{ label }}
+               </label>
+               {% endfor %}
+           </div>
+           <button type="submit" class="add-cart-btn detail-btn">Place Order</button>
+        </form>
+    </div>
+
+    <div class="checkout-summary">
+        <h3>Order Summary</h3>
+        {% for item in cart.items.all %}
+        <div class="summary-row">
+            <span>{{ item.product.name }} x {{ item.quantity }}</span>
+            <span>₹{{ item.subtotal }}</span>
+        </div>
+        {% endfor %}
+        <div class="summary-total">
+            <strong>Total: ₹{{ cart.total_price }}</strong>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

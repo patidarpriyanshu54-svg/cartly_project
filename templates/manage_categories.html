@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Categories - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Manage Categories</h2>
+<a href="{% url 'dashboard' %}" class="back-link">← Back to Dashboard</a>
+
+<div class="checkout-form" style="max-width: 400px; margin: 20px 0;">
+    <h3>Add New Category</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Slug (lowercase, no spaces)</label>
+        <input type="text" name="slug" pattern="[a-z0-9-]+" title="Only lowercase letters, numbers, and hyphens" required>
+
+        <button type="submit" class="add-cart-btn">Add Category</button>
+    </form>
+</div>
+
+<div class="manage-table">
+    <div class="manage-row" style="grid-template-columns: 2fr 2fr 1fr;">
+        <span><strong>Name</strong></span>
+        <span><strong>Slug</strong></span>
+        <span><strong>Actions</strong></span>
+    </div>
+    {% for cat in categories %}
+    <div class="manage-row" style="grid-template-columns: 2fr 2fr 1fr;">
+        <span>{{ cat.name }}</span>
+        <span>{{ cat.slug }}</span>
+        <span>
+            <a href="{% url 'delete_category' cat.id %}" class="dash-btn" style="background-color: #d9534f;" onclick="return confirm('Delete this category? Products in it may be affected.');">Delete</a>
+        </span>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

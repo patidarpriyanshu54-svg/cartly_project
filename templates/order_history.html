@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">My Orders</h2>
+<a href="{% url 'home' %}" class="back-link">← Continue Shopping</a>
+
+{% if orders %}
+<div class="orders-list">
+    {% for order in orders %}
+    <div class="order-card">
+        <div class="order-header">
+            <div>
+                <strong>Order #{{ forloop.revcounter }}</strong>
+                <span class="order-date">{{ order.created_at|date:"d M Y" }}</span>
+            </div>
+            <span class="order-status status-{{ order.status }}">{{ order.get_status_display }}</span>
+        </div>
+
+        {% if order.status != 'cancelled' %}
+        <div class="delivery-info">
+            📦 Estimated Delivery: <strong>{{ order.estimated_delivery|date:"d M Y" }}</strong>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-step {% if order.status == 'pending' or order.status == 'confirmed' or order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                <span class="step-dot"></span>
+                <span class="step-label">Pending</span>
+            </div>
+            <div class="progress-line {% if order.status == 'confirmed' or order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}"></div>
+            <div class="progress-step {% if order.status == 'confirmed' or order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                <span class="step-dot"></span>
+                <span class="step-label">Confirmed</span>
+            </div>
+            <div class="progress-line {% if order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}"></div>
+            <div class="progress-step {% if order.status == 'shipped' or order.status == 'delivered' %}completed{% endif %}">
+                <span class="step-dot"></span>
+                <span class="step-label">Shipped</span>
+            </div>
+            <div class="progress-line {% if order.status == 'delivered' %}completed{% endif %}"></div>
+            <div class="progress-step {% if order.status == 'delivered' %}completed{% endif %}">
+                <span class="step-dot"></span>
+                <span class="step-label">Delivered</span>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="order-items">
+            {% for item in order.items.all %}
+            <div class="order-item-row">
+                <span>{{ item.product_name }} x {{ item.quantity }}</span>
+                <span>₹{{ item.subtotal }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="order-footer">
+            <span>Deliver to: {{ order.address }}, {{ order.city }} · {{ order.get_payment_method_display }}</span>
+            <strong>Total: ₹{{ order.total_amount }}</strong>
+        </div>
+
+        {% if order.status == 'pending' or order.status == 'confirmed' %}
+        <a href="{% url 'cancel_order' order.id %}" class="cancel-order-link" onclick="return confirm('Are you sure you want to cancel this order?');">Cancel Order</a>
+        {% endif %}
+
+        {% if order.can_return %}
+        <a href="{% url 'return_order' order.id %}" class="cancel-order-link">Return Order</a>
+        {% endif %}
+
+        {% if order.status == 'return_requested' %}
+        <p style="color: #856404; background: #fff3cd; padding: 8px 12px; border-radius: 4px; font-size: 13px; margin-top: 10px;">Return requested — we'll process it soon.</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <p class="empty-icon">📦</p>
+    <h3>No orders yet</h3>
+    <p>Your order history will show up here once you shop.</p>
+    <a href="{% url 'home' %}" class="add-cart-btn detail-btn">Start Shopping</a>
+</div>
+{% endif %}
+{% endblock %}

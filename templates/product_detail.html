@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }} - Cartly{% endblock %}
+
+{% block content %}
+
+<div class="product-detail">
+    <div class="detail-image">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" id="main-product-image">
+        {% else %}
+        <div class="no-image" id="main-product-image">No Image</div>
+        {% endif %}
+
+        {% if product.images.all %}
+        <div class="thumbnail-row">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="thumbnail active" onclick="changeMainImage(this)">
+            {% endif %}
+            {% for img in product.images.all %}
+            {% if img.image %}
+            <img src="{{ img.image.url }}" class="thumbnail" onclick="changeMainImage(this)">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="detail-info">
+        <h1>{{ product.name }}</h1>
+        <a href="{% url 'toggle_wishlist' product.id %}" class="wishlist-icon-detail {% if in_wishlist %}active{% endif %}">{% if in_wishlist %}❤{% else %}♡{% endif %} {% if in_wishlist %}Remove from Wishlist{% else %}Add to Wishlist{% endif %}</a>
+        <p class="category">Category: {{ product.category.name }}</p>
+        <p class="price">₹{{ product.price }}</p>
+
+        {% if product.stock > 0 %}
+        <p class="in-stock">✅ In Stock ({{ product.stock }} available)</p>
+        {% else %}
+        <p class="out-stock">❌ Out of Stock</p>
+        {% endif %}
+
+        {% if product.sizes.all %}
+        <div class="size-selector">
+            <label>Select Size:</label>
+            <div class="size-options">
+                {% for s in product.sizes.all %}
+                {% if s.stock > 0 %}
+                <span class="size-btn" onclick="selectSize(this)">{{ s.size }}</span>
+                {% else %}
+                <span class="size-btn size-disabled">{{ s.size }}</span>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <p class="description">{{ product.description }}</p>
+
+        <a href="{% url 'add_to_cart' product.id %}" class="add-cart-btn detail-btn">Add to Cart</a>
+        <a href="{% url 'home' %}" class="back-link">← Back to Products</a>
+    </div>
+</div>
+
+{% if product.specifications.all %}
+<div class="specs-section">
+    <h3>Specifications</h3>
+    <table class="specs-table">
+        {% for spec in product.specifications.all %}
+        <tr>
+            <td class="spec-key">{{ spec.key }}</td>
+            <td class="spec-value">{{ spec.value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+<div class="reviews-section">
+    <h3>Ratings & Reviews {% if avg_rating %}({{ avg_rating }}★ average){% endif %}</h3>
+
+    {% if request.user.is_authenticated %}
+    <form method="POST" class="review-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="add-cart-btn">Submit Review</button>
+    </form>
+    {% else %}
+    <p><a href="{% url 'login' %}">Login</a> to write a review.</p>
+    {% endif %}
+
+    <div class="reviews-list">
+        {% for review in reviews %}
+        <div class="review-card">
+            <div class="review-header">
+                <strong>{{ review.user.username }}</strong>
+                <span class="review-rating">{{ review.rating }}★</span>
+            </div>
+            {% if review.comment %}
+            <p class="review-comment">{{ review.comment }}</p>
+            {% endif %}
+            <span class="review-date">{{ review.created_at|date:"d M Y" }}</span>
+        </div>
+        {% empty %}
+        <p>No reviews yet. Be the first to review this product!</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function changeMainImage(thumbnail) {
+    document.getElementById('main-product-image').src = thumbnail.src;
+    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+    thumbnail.classList.add('active');
+}
+
+function selectSize(el) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-selected'));
+    el.classList.add('size-selected');
+}
+</script>
+{% if related_products %}
+<div class="related-section">
+    <h3>You May Also Like</h3>
+    <div class="product-grid">
+        {% for rp in related_products %}
+        <div class="product-card">
+            <a href="{% url 'product_detail' rp.slug %}" class="product-link">
+                {% if rp.image %}
+                <img src="{{ rp.image.url }}" alt="{{ rp.name }}">
+                {% else %}
+                <div class="no-image">No Image</div>
+                {% endif %}
+                <h3>{{ rp.name }}</h3>
+                <p class="price">₹{{ rp.price }}</p>
+            </a>
+            <a href="{% url 'add_to_cart' rp.id %}" class="add-cart-btn">Add to Cart</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

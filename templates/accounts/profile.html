@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - Cartly{% endblock %}
+
+{% block content %}
+
+<div class="auth-box">
+    <h2>My Profile</h2>
+    <p style="margin-bottom: 15px; color: #777;">Username: {{ request.user.username }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="add-cart-btn">Save Profile</button>
+    </form>
+</div>
+
+{% endblock %}

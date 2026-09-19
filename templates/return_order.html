@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Return Order - Cartly{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Return Order</h2>
+<a href="{% url 'order_history' %}" class="back-link">← Back to Orders</a>
+
+<div class="checkout-form" style="max-width: 500px; margin-top: 20px;">
+    <h3>Refund Bank Details</h3>
+    {% if errors %}
+    <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-size: 14px;">
+        {% for error in errors %}
+        <p style="margin: 0;">{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>Account Holder Name</label>
+        <input type="text" name="account_holder_name" pattern="[A-Za-z ]+" title="Name should only contain letters and spaces" required>
+
+        <label>Account Number</label>
+        <input type="text" name="account_number" pattern="[0-9]{14}" maxlength="14" title="Account number must be exactly 14 digits" required>
+
+        <label>IFSC Code</label>
+        <input type="text" name="ifsc_code" maxlength="11" style="text-transform: uppercase;" title="Enter a valid 11-character IFSC code" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="phone" pattern="[6-9][0-9]{9}" maxlength="10" title="Enter a valid 10-digit Indian mobile number" required>
+
+        <button type="submit" class="add-cart-btn detail-btn">Submit Return Request</button>
+    </form>
+</div>
+
+{% endblock %}

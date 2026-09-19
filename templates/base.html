@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cartly{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-left">
+            <a href="/" class="logo">Cart<span>ly</span></a>
+        </div>
+
+        <form action="{% url 'home' %}" method="GET" class="nav-search">
+            <input type="text" name="q" placeholder="Search products..." value="{{ query }}">
+            <button type="submit">🔍</button>
+        </form>
+
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="nav-link">Hi, {{ user.username }}</a>
+                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+            {% endif %}
+            {% if user.is_staff %}
+            <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+            {% endif %}
+            <a href="{% url 'order_history' %}" class="nav-link">Orders</a>
+            <a href="{% url 'wishlist' %}" class="nav-link">💛 Wishlist</a>
+            <a href="{% url 'cart_detail' %}" class="nav-link cart-link">🛒 Cart</a>
+        </div>
+    </header>
+
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p><a href="{% url 'about_us' %}" style="color: #ffb84c; text-decoration: none;">About Us</a></p>
+        <p>&copy; 2026 Cartly. All rights reserved.</p>
+    </footer>
+        <div id="chat-widget">
+        <div id="chat-window" class="chat-hidden">
+            <div id="chat-header">
+                <span id="bot-face">
+                    <span class="bot-eye left"></span>
+                    <span class="bot-eye right"></span>
+                    <span class="bot-mouth"></span>
+                </span>
+                Cartly Helper
+                <span id="chat-close">✕</span>
+            </div>
+            <div id="chat-messages"></div>
+        </div>
+        <div id="chat-toggle">
+            <span class="bot-eye left"></span>
+            <span class="bot-eye right"></span>
+            <span class="bot-mouth"></span>
+        </div>
+    </div>
+
+    <script>
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatClose = document.getElementById('chat-close');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const SUPPORT_EMAIL = 'support@cartly.com';
+        let interactionCount = 0;
+
+        const menuOptions = [
+            { key: 'track', label: '📦 Track my order' },
+            { key: 'return', label: '↩️ Return / Refund policy' },
+            { key: 'payment', label: '💳 Payment issues' },
+            { key: 'delivery', label: '🚚 Delivery time' },
+            { key: 'cancel', label: '❌ Cancel an order' },
+            { key: 'contact', label: '💬 Talk to support' },
+        ];
+
+        const answers = {
+            track: "You can track your order anytime from the 'Orders' page in the navbar. It shows live status: Pending → Confirmed → Shipped → Delivered.",
+            return: "You can return a delivered order within 7 days from the Orders page. Just click 'Return Order' and fill in your refund bank details — our team will process it after verification.",
+            payment: "We accept Cash on Delivery, UPI, and Card payments. If a payment failed or didn't reflect, please check your Orders page first — if the issue continues, contact our support team.",
+            delivery: "Standard delivery usually takes about 5 days from the order date. You'll see the exact estimated delivery date on your Orders page.",
+            cancel: "You can cancel an order from the Orders page as long as it's still Pending or Confirmed. Once it's Shipped, cancellation isn't available — you can request a return after delivery instead.",
+        };
+
+        function openChat() {
+            chatWindow.classList.remove('chat-hidden');
+            if (chatMessages.children.length === 0) {
+                addBotBubble("Hi! 👋 I'm the Cartly Helper. What do you need help with?");
+                showMenu();
+            }
+        }
+
+        function closeChat() {
+            chatWindow.classList.add('chat-hidden');
+        }
+
+        chatToggle.addEventListener('click', () => {
+            if (chatWindow.classList.contains('chat-hidden')) {
+                openChat();
+            } else {
+                closeChat();
+            }
+        });
+
+        chatClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeChat();
+        });
+
+        function addBotBubble(text) {
+            const msg = document.createElement('div');
+            msg.className = 'chat-msg bot';
+            msg.textContent = text;
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addUserBubble(text) {
+            const msg = document.createElement('div');
+            msg.className = 'chat-msg user';
+            msg.textContent = text;
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showMenu() {
+            const menuDiv = document.createElement('div');
+            menuDiv.className = 'chat-options';
+            menuOptions.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-option-btn';
+                btn.textContent = opt.label;
+                btn.onclick = () => handleOption(opt.key, opt.label, menuDiv);
+                menuDiv.appendChild(btn);
+            });
+            chatMessages.appendChild(menuDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleOption(key, label, menuDiv) {
+            menuDiv.remove();
+            addUserBubble(label);
+            interactionCount++;
+
+            if (key === 'contact') {
+                if (interactionCount < 3)  {
+                    addBotBubble("Let's see if I can help first! Could you try one of the topics below? If it still doesn't help, I'll connect you to our team.");
+                    showMenu();
+                } else {
+                    showContactUs();
+                }
+                return;
+            }
+
+            addBotBubble(answers[key]);
+            showFollowUp();
+        }
+
+        function showFollowUp() {
+            const followDiv = document.createElement('div');
+            followDiv.className = 'chat-options';
+
+            const yesBtn = document.createElement('button');
+            yesBtn.className = 'chat-option-btn';
+            yesBtn.textContent = '✅ That answered my question';
+            yesBtn.onclick = () => {
+                followDiv.remove();
+                addUserBubble('That answered my question');
+                addBotBubble("Great! Glad I could help 😊 Let me know if you need anything else.");
+                const restartDiv = document.createElement('div');
+                restartDiv.className = 'chat-options';
+                const restartBtn = document.createElement('button');
+                restartBtn.className = 'chat-option-btn';
+                restartBtn.textContent = '🔄 Ask another question';
+                restartBtn.onclick = () => {
+                    restartDiv.remove();
+                    showMenu();
+                };
+                restartDiv.appendChild(restartBtn);
+                chatMessages.appendChild(restartDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+
+            const noBtn = document.createElement('button');
+            noBtn.className = 'chat-option-btn';
+            noBtn.textContent = '❓ Still need help';
+            noBtn.onclick = () => {
+                followDiv.remove();
+                addUserBubble('Still need help');
+                interactionCount++;
+                if (interactionCount < 3) {
+                    addBotBubble("Let's try another topic — it might help! Here's the menu again:");
+                    showMenu();
+                } else {
+                    showContactUs();
+                }
+            };
+
+            followDiv.appendChild(yesBtn);
+            followDiv.appendChild(noBtn);
+            chatMessages.appendChild(followDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showContactUs() {
+            addBotBubble(`No worries! Please reach out to our team directly and we'll sort it out:`);
+            const emailDiv = document.createElement('div');
+            emailDiv.className = 'chat-msg bot chat-email';
+            emailDiv.innerHTML = `📧 <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
+            chatMessages.appendChild(emailDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            const backDiv = document.createElement('div');
+            backDiv.className = 'chat-options';
+            const backBtn = document.createElement('button');
+            backBtn.className = 'chat-option-btn';
+            backBtn.textContent = '⬅️ Back to menu';
+            backBtn.onclick = () => {
+                backDiv.remove();
+                showMenu();
+            };
+            backDiv.appendChild(backBtn);
+            chatMessages.appendChild(backDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

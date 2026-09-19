@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmed - Cartly{% endblock %}
+
+{% block content %}
+
+<div class="order-success">
+    <h2>✅ Order Placed Successfully!</h2>
+    <p>Thank you, {{ order.full_name }}! Your order #{{ order.id }} has been confirmed.</p>
+    <p><strong>Total Amount:</strong> ₹{{ order.total_amount }}</p>
+    <p><strong>Payment Method:</strong> {{ order.get_payment_method_display }}</p>
+    <p><strong>Delivery Address:</strong> {{ order.address }}, {{ order.city }} - {{ order.pincode }}</p>
+    <a href="{% url 'home' %}" class="add-cart-btn detail-btn">Continue Shopping</a>
+</div>
+
+{% endblock %}

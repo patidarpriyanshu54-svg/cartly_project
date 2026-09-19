@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cartly - Shop Everything{% endblock %}
+
+{% block content %}
+
+<div class="hero-banner">
+    <h1>Welcome to Cartly</h1>
+    <p>Shop smarter. Discover great deals across every category.</p>
+</div>
+
+<h2 class="section-title">All Products</h2>
+
+<div class="category-filters">
+    <a href="{% url 'home' %}" class="cat-btn {% if not selected_category %}active{% endif %}">All</a>
+    {% for cat in categories %}
+    <a href="{% url 'home' %}?category={{ cat.slug }}" class="cat-btn {% if selected_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+    {% endfor %}
+</div>
+
+<div class="product-grid">
+    {% for product in products %}
+<div class="product-card">
+    <a href="{% url 'toggle_wishlist' product.id %}" class="wishlist-icon {% if product.id in wishlist_ids %}active{% endif %}">
+        {% if product.id in wishlist_ids %}❤{% else %}♡{% endif %}
+    </a>
+    </a>
+    <a href="{% url 'product_detail' product.slug %}" class="product-link">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <div class="no-image">No Image</div>
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p class="price">₹{{ product.price }}</p>
+            <p class="category">{{ product.category.name }}</p>
+        </a>
+        <a href="{% url 'add_to_cart' product.id %}" class="add-cart-btn">Add to Cart</a>
+    </div>
+    {% empty %}
+    <div class="empty-state">
+        <p class="empty-icon">🔍</p>
+        <h3>No products found</h3>
+        <p>Try a different search term or category.</p>
+        <a href="{% url 'home' %}" class="add-cart-btn detail-btn">Clear Filters</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
