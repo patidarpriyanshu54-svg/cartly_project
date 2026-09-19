@@ -137,6 +137,23 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+if os.environ.get('CLOUDINARY_CLOUD_NAME'):
+    INSTALLED_APPS.insert(
+        INSTALLED_APPS.index('django.contrib.staticfiles'),
+        'cloudinary_storage',
+    )
+    INSTALLED_APPS.append('cloudinary')
+
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+        'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+        'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    }
+    STORAGES["default"] = {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    }
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 

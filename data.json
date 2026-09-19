@@ -1,0 +1,1583 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$WCM3SZCBi6q6N4HtbOwj5i$NJYqwRkzOIF83oJmdlna6iM2JK2m+5+UrBk49YNkXl0=",
+    "last_login": "2026-09-13T16:58:59.817Z",
+    "is_superuser": true,
+    "username": "priyanshu_patidar",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-22T07:57:15Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$VehLHgpLyFLMZiKSiuP2Xn$GsDZRUUxiU6PpNjFnglQHW7B2SSZy+7OB/pOOzweo9k=",
+    "last_login": "2026-08-22T13:10:20.194Z",
+    "is_superuser": false,
+    "username": "nachiket_dhakad",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-22T13:02:44.470Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$hVqVGHMf9JtOaXGT3cW9Oi$UwsSqeHLrnaDNRypCXqIBk0+7txkEX5WNZzHiBewBv4=",
+    "last_login": "2026-09-01T08:02:44.014Z",
+    "is_superuser": false,
+    "username": "uday_rathore",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-01T08:02:43.829Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$7UdVkhJz5A2wb7epBInbMm$gyQMRXQJylnVs9JvjJkK9GGapToekn8wipI4AnF8lyQ=",
+    "last_login": "2026-09-13T16:57:44.905Z",
+    "is_superuser": false,
+    "username": "piyush",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-13T16:57:44.715Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "Electronics",
+    "slug": "Electronics"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "Fashion",
+    "slug": "Fashion"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "Kitchen",
+    "slug": "Kitchen"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Laptop",
+    "slug": "Laptop",
+    "description": "vivobook laptop",
+    "price": "69999.00",
+    "stock": 63,
+    "image": "products/laptop.avif",
+    "created_at": "2026-08-22T08:23:40.845Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Washing Machine",
+    "slug": "Washing-Machine",
+    "description": "washing machine",
+    "price": "17999.00",
+    "stock": 195,
+    "image": "products/washing_machine.avif",
+    "created_at": "2026-08-22T08:28:21.790Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "checked shirt",
+    "slug": "checkd_shirt",
+    "description": "checked shirt relaxed fit and comfort",
+    "price": "899.00",
+    "stock": 283,
+    "image": "products/shirt.jpg",
+    "created_at": "2026-08-22T08:35:35.488Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "jeans",
+    "slug": "jeans",
+    "description": "baggy  jeans relaxed",
+    "price": "798.96",
+    "stock": 997,
+    "image": "products/jeans.webp",
+    "created_at": "2026-08-22T08:37:01.684Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "leather jacket",
+    "slug": "jacket",
+    "description": "leather jacket for mens",
+    "price": "2799.00",
+    "stock": 197,
+    "image": "products/jacket.webp",
+    "created_at": "2026-08-22T08:38:17.434Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "cooker",
+    "slug": "cooker",
+    "description": "cooker for you kitchen",
+    "price": "2299.00",
+    "stock": 266,
+    "image": "products/cooker.jpg",
+    "created_at": "2026-08-22T08:41:04.421Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "grinder",
+    "slug": "grinder",
+    "description": "grinding machine",
+    "price": "799.00",
+    "stock": 788,
+    "image": "products/grinder.avif",
+    "created_at": "2026-08-22T08:41:56.767Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "category": 3,
+    "name": "cooking utensils",
+    "slug": "cooking_utensils",
+    "description": "nylon cooking utensils",
+    "price": "349.00",
+    "stock": 674,
+    "image": "products/nylon_cooking_utensils.webp",
+    "created_at": "2026-08-22T08:42:50.036Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "sneakers",
+    "slug": "sneakers",
+    "description": "style with new sneakers",
+    "price": "1199.00",
+    "stock": 562,
+    "image": "products/fashion-shoes-sneakers_1203-7528.avif",
+    "created_at": "2026-08-23T09:07:21.307Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "category": 1,
+    "name": "redmi note 12 5g",
+    "slug": "mobile",
+    "description": "redmi note 12 5g",
+    "price": "12000.00",
+    "stock": 345,
+    "image": "products/phone.jpg",
+    "created_at": "2026-08-24T09:12:40.947Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 16",
+    "slug": "IPHONE",
+    "description": "I PHONE 16",
+    "price": "69900.00",
+    "stock": 114,
+    "image": "products/iphone_16.jpg",
+    "created_at": "2026-08-24T17:35:56.315Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 16 PRO",
+    "slug": "I",
+    "description": "I PHONE 16 PRO",
+    "price": "79000.00",
+    "stock": 76,
+    "image": "products/I_PHONE_16_PRO_2.jpg",
+    "created_at": "2026-08-24T17:43:39.048Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 16 PRO MAX",
+    "slug": "I16",
+    "description": "I PHONE",
+    "price": "125900.00",
+    "stock": 65,
+    "image": "products/16_pro_max.jpg",
+    "created_at": "2026-08-24T17:53:19.658Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 17",
+    "slug": "I17",
+    "description": "I PHONE 17",
+    "price": "82900.00",
+    "stock": 78,
+    "image": "products/17.jpg",
+    "created_at": "2026-08-24T17:56:46.898Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 17 PRO MAX",
+    "slug": "2773",
+    "description": "I PHONE 17 PRO MAX",
+    "price": "149900.00",
+    "stock": 78,
+    "image": "products/17_pro_max.jpg",
+    "created_at": "2026-08-24T18:00:58.347Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "category": 1,
+    "name": "I PHONE 13",
+    "slug": "APPLE_IPHONE",
+    "description": "I PHONE 13",
+    "price": "49900.00",
+    "stock": 65,
+    "image": "products/136.jpg",
+    "created_at": "2026-08-25T12:35:03.073Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "category": 1,
+    "name": "ASUS TUF A15",
+    "slug": "ASUS",
+    "description": "",
+    "price": "76998.98",
+    "stock": 184,
+    "image": "products/asus_tuf_1.jpg",
+    "created_at": "2026-09-13T12:32:33.432Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "category": 1,
+    "name": "ASUS GAMING V 16",
+    "slug": "A",
+    "description": "",
+    "price": "93998.97",
+    "stock": 201,
+    "image": "products/asus_1.webp",
+    "created_at": "2026-09-13T12:36:47.224Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "category": 1,
+    "name": "MACBOOK NEO",
+    "slug": "M",
+    "description": "",
+    "price": "79998.97",
+    "stock": 984,
+    "image": "products/macbook_1.jpg",
+    "created_at": "2026-09-13T12:39:03.729Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "category": 1,
+    "name": "REDMI NOTE 13 PRO",
+    "slug": "R",
+    "description": "",
+    "price": "24998.98",
+    "stock": 46,
+    "image": "products/redmi_note_13_pro.webp",
+    "created_at": "2026-09-13T12:42:36.074Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "category": 1,
+    "name": "SAMSUNG S25 ULTRA",
+    "slug": "S",
+    "description": "",
+    "price": "89999.00",
+    "stock": 181,
+    "image": "products/samsung.jpg",
+    "created_at": "2026-09-13T12:45:12.747Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "category": 1,
+    "name": "FRIDGE",
+    "slug": "F",
+    "description": "",
+    "price": "28998.98",
+    "stock": 0,
+    "image": "products/fridge.avif",
+    "created_at": "2026-09-13T16:34:58.161Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "category": 1,
+    "name": "AIR CONDITONER",
+    "slug": "AC",
+    "description": "",
+    "price": "35998.98",
+    "stock": 98,
+    "image": "products/ac_1.jpg",
+    "created_at": "2026-09-13T16:36:06.555Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "category": 1,
+    "name": "COOLER",
+    "slug": "C",
+    "description": "",
+    "price": "8998.98",
+    "stock": 97,
+    "image": "products/cooler.jpg",
+    "created_at": "2026-09-13T16:37:25.767Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "category": 2,
+    "name": "TROUSER",
+    "slug": "T",
+    "description": "",
+    "price": "898.99",
+    "stock": 348,
+    "image": "products/trouser_1.jpg",
+    "created_at": "2026-09-13T16:38:47.588Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 28,
+  "fields": {
+    "category": 2,
+    "name": "TRACKPANT",
+    "slug": "BT",
+    "description": "",
+    "price": "898.98",
+    "stock": 397,
+    "image": "products/tracpants_1.jpg",
+    "created_at": "2026-09-13T16:41:10.239Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 29,
+  "fields": {
+    "category": 2,
+    "name": "TRACKPANT",
+    "slug": "BX",
+    "description": "",
+    "price": "799.00",
+    "stock": 497,
+    "image": "products/track_pants_3.jpg",
+    "created_at": "2026-09-13T16:45:20.512Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 30,
+  "fields": {
+    "category": 2,
+    "name": "TSHIRT",
+    "slug": "TS",
+    "description": "",
+    "price": "899.00",
+    "stock": 397,
+    "image": "products/jeans_1.jpg",
+    "created_at": "2026-09-13T16:46:41.487Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 31,
+  "fields": {
+    "category": 2,
+    "name": "TSHIRT",
+    "slug": "TRG",
+    "description": "",
+    "price": "799.00",
+    "stock": 786,
+    "image": "products/tshirt_2.jpg",
+    "created_at": "2026-09-13T17:05:57.284Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 32,
+  "fields": {
+    "category": 2,
+    "name": "TSHIRT",
+    "slug": "TGR",
+    "description": "",
+    "price": "1999.00",
+    "stock": 553,
+    "image": "products/t_shirt_3.jpg",
+    "created_at": "2026-09-13T17:08:08.315Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "category": 2,
+    "name": "TSHIRT",
+    "slug": "TRR",
+    "description": "",
+    "price": "1999.00",
+    "stock": 261,
+    "image": "products/t_shirt_4.jpg",
+    "created_at": "2026-09-13T17:09:44.037Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 34,
+  "fields": {
+    "category": 2,
+    "name": "SHIRT",
+    "slug": "ST",
+    "description": "",
+    "price": "1099.00",
+    "stock": 564,
+    "image": "products/shirt_1.jpg",
+    "created_at": "2026-09-13T17:13:19.203Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 35,
+  "fields": {
+    "category": 2,
+    "name": "SHIRT",
+    "slug": "STR",
+    "description": "",
+    "price": "1999.00",
+    "stock": 65,
+    "image": "products/shirt_2.jpg",
+    "created_at": "2026-09-13T17:14:21.349Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 36,
+  "fields": {
+    "category": 2,
+    "name": "SHIRT",
+    "slug": "TST",
+    "description": "",
+    "price": "1099.00",
+    "stock": 89,
+    "image": "products/shirt_3.jpg",
+    "created_at": "2026-09-13T17:15:28.918Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 37,
+  "fields": {
+    "category": 2,
+    "name": "KNIFE  SET",
+    "slug": "KN",
+    "description": "",
+    "price": "799.00",
+    "stock": 109,
+    "image": "products/knife_set.jpg",
+    "created_at": "2026-09-13T17:17:28.219Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 38,
+  "fields": {
+    "category": 3,
+    "name": "UTENSILS",
+    "slug": "UT",
+    "description": "",
+    "price": "499.00",
+    "stock": 76,
+    "image": "products/utensils.webp",
+    "created_at": "2026-09-13T17:17:59.839Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 39,
+  "fields": {
+    "category": 3,
+    "name": "BOWL",
+    "slug": "BO",
+    "description": "",
+    "price": "399.00",
+    "stock": 48,
+    "image": "products/bowl.jpg",
+    "created_at": "2026-09-13T17:18:44.569Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 40,
+  "fields": {
+    "category": 3,
+    "name": "GLASS SET",
+    "slug": "GL",
+    "description": "",
+    "price": "299.00",
+    "stock": 80,
+    "image": "products/glass.jpg",
+    "created_at": "2026-09-13T17:19:18.681Z"
+  }
+},
+{
+  "model": "products.cart",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "nachiket_dhakad"
+    ],
+    "created_at": "2026-08-22T13:30:31.295Z"
+  }
+},
+{
+  "model": "products.cart",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "priyanshu_patidar"
+    ],
+    "created_at": "2026-08-22T13:41:00.171Z"
+  }
+},
+{
+  "model": "products.cart",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "uday_rathore"
+    ],
+    "created_at": "2026-09-01T11:04:44.999Z"
+  }
+},
+{
+  "model": "products.cartitem",
+  "pk": 2,
+  "fields": {
+    "cart": 1,
+    "product": 2,
+    "quantity": 1
+  }
+},
+{
+  "model": "products.cartitem",
+  "pk": 3,
+  "fields": {
+    "cart": 1,
+    "product": 3,
+    "quantity": 1
+  }
+},
+{
+  "model": "products.cartitem",
+  "pk": 4,
+  "fields": {
+    "cart": 1,
+    "product": 5,
+    "quantity": 1
+  }
+},
+{
+  "model": "products.cartitem",
+  "pk": 27,
+  "fields": {
+    "cart": 3,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "products.order",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "priyanshu_patidar"
+    ],
+    "full_name": "Sakshi Ajmera",
+    "address": "Lodhipura Indore",
+    "city": "Indore",
+    "pincode": "452002",
+    "phone": "8962852641",
+    "total_amount": "139998.00",
+    "payment_method": "upi",
+    "status": "delivered",
+    "created_at": "2026-09-09T10:39:48.369Z",
+    "delivered_at": "2026-09-09T10:40:20.924Z"
+  }
+},
+{
+  "model": "products.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 10,
+    "product": 2,
+    "product_name": "Laptop",
+    "price": "69999.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "products.review",
+  "pk": 2,
+  "fields": {
+    "product": 6,
+    "user": [
+      "priyanshu_patidar"
+    ],
+    "rating": 5,
+    "comment": "",
+    "created_at": "2026-08-24T16:52:58.156Z"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 11,
+    "image": "products/gallery/images_12_gBrA27r.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 11,
+    "image": "products/gallery/images_13_axdhTtM.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 12,
+    "image": "products/gallery/phone_zfBQIyh.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 13,
+    "image": "products/gallery/i_phone_16.webp"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 14,
+    "image": "products/gallery/iPhone16pro_2.webp"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 15,
+    "image": "products/gallery/16_PRO_M.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 13,
+  "fields": {
+    "product": 16,
+    "image": "products/gallery/I_17.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 14,
+  "fields": {
+    "product": 17,
+    "image": "products/gallery/images_14.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 15,
+  "fields": {
+    "product": 18,
+    "image": "products/gallery/13_i.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 16,
+  "fields": {
+    "product": 19,
+    "image": "products/gallery/asus_tuf_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 17,
+  "fields": {
+    "product": 19,
+    "image": "products/gallery/asus_tuf_3.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 18,
+  "fields": {
+    "product": 20,
+    "image": "products/gallery/asus_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 19,
+  "fields": {
+    "product": 20,
+    "image": "products/gallery/asus_3.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 20,
+  "fields": {
+    "product": 21,
+    "image": "products/gallery/macbook_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 21,
+  "fields": {
+    "product": 21,
+    "image": "products/gallery/macbook_3.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 22,
+  "fields": {
+    "product": 22,
+    "image": "products/gallery/redmi_note_13_pro.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 23,
+  "fields": {
+    "product": 22,
+    "image": "products/gallery/redmi_note_13_pro_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 24,
+  "fields": {
+    "product": 23,
+    "image": "products/gallery/samsung_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 25,
+  "fields": {
+    "product": 23,
+    "image": "products/gallery/samsung_3.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 26,
+  "fields": {
+    "product": 24,
+    "image": "products/gallery/fridge_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 27,
+  "fields": {
+    "product": 24,
+    "image": "products/gallery/fridge_3.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 28,
+  "fields": {
+    "product": 25,
+    "image": "products/gallery/ac_2.png"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 29,
+  "fields": {
+    "product": 37,
+    "image": "products/gallery/knife_2.jpg"
+  }
+},
+{
+  "model": "products.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 37,
+    "image": "products/gallery/knnife_3.jpg"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 1,
+  "fields": {
+    "product": 17,
+    "key": "RAM",
+    "value": "12GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 2,
+  "fields": {
+    "product": 17,
+    "key": "ROM",
+    "value": "256GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 3,
+  "fields": {
+    "product": 17,
+    "key": "PROCESSOR",
+    "value": "APPLE A 19 PRO"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 4,
+  "fields": {
+    "product": 17,
+    "key": "DISPLAY",
+    "value": "6.9 INCH OLED"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 5,
+  "fields": {
+    "product": 18,
+    "key": "RAM",
+    "value": "4"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 6,
+  "fields": {
+    "product": 18,
+    "key": "ROM",
+    "value": "128"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 7,
+  "fields": {
+    "product": 18,
+    "key": "DISPLAY",
+    "value": "6.1 INCH"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 8,
+  "fields": {
+    "product": 18,
+    "key": "PROCESSOR",
+    "value": "A15"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 9,
+  "fields": {
+    "product": 19,
+    "key": "RAM",
+    "value": "12"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 10,
+  "fields": {
+    "product": 19,
+    "key": "STORAGE",
+    "value": "512"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 11,
+  "fields": {
+    "product": 19,
+    "key": "GRAFIC CARD",
+    "value": "RTX3050"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 12,
+  "fields": {
+    "product": 19,
+    "key": "PROCESSOR",
+    "value": "ryzen 7"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 13,
+  "fields": {
+    "product": 20,
+    "key": "RAM",
+    "value": "12"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 14,
+  "fields": {
+    "product": 20,
+    "key": "STORAGE",
+    "value": "512"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 15,
+  "fields": {
+    "product": 20,
+    "key": "GRAPHIC CARD",
+    "value": "RTX 4050"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 16,
+  "fields": {
+    "product": 20,
+    "key": "PROCESSOR",
+    "value": "INTEL CORE 5 (14TH GEN)"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 17,
+  "fields": {
+    "product": 21,
+    "key": "RAM",
+    "value": "12"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 18,
+  "fields": {
+    "product": 21,
+    "key": "STORAGE",
+    "value": "512"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 19,
+  "fields": {
+    "product": 22,
+    "key": "RAM",
+    "value": "8GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 20,
+  "fields": {
+    "product": 22,
+    "key": "ROM",
+    "value": "128GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 21,
+  "fields": {
+    "product": 22,
+    "key": "PROCESSOR",
+    "value": "SNAPDROGON 7SGEN2"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 22,
+  "fields": {
+    "product": 22,
+    "key": "DISPLAY",
+    "value": "AMOLED"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 23,
+  "fields": {
+    "product": 23,
+    "key": "RAM",
+    "value": "12GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 24,
+  "fields": {
+    "product": 23,
+    "key": "ROM",
+    "value": "256GB"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 25,
+  "fields": {
+    "product": 23,
+    "key": "PROCESSOR",
+    "value": "SNAPDROGON 8 ELITE"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 26,
+  "fields": {
+    "product": 23,
+    "key": "CAMERA",
+    "value": "200MP"
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 1,
+  "fields": {
+    "product": 6,
+    "size": "S",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 2,
+  "fields": {
+    "product": 6,
+    "size": "M",
+    "stock": 47
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 3,
+  "fields": {
+    "product": 6,
+    "size": "L",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 4,
+  "fields": {
+    "product": 6,
+    "size": "XL",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 5,
+  "fields": {
+    "product": 27,
+    "size": "28",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 6,
+  "fields": {
+    "product": 27,
+    "size": "30",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 7,
+  "fields": {
+    "product": 27,
+    "size": "32",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 8,
+  "fields": {
+    "product": 27,
+    "size": "34",
+    "stock": 49
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 9,
+  "fields": {
+    "product": 28,
+    "size": "28",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 10,
+  "fields": {
+    "product": 28,
+    "size": "30",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 11,
+  "fields": {
+    "product": 28,
+    "size": "32",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 12,
+  "fields": {
+    "product": 28,
+    "size": "34",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 13,
+  "fields": {
+    "product": 29,
+    "size": "28",
+    "stock": 503
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 14,
+  "fields": {
+    "product": 29,
+    "size": "30",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 15,
+  "fields": {
+    "product": 29,
+    "size": "32",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 16,
+  "fields": {
+    "product": 29,
+    "size": "34",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 17,
+  "fields": {
+    "product": 30,
+    "size": "M",
+    "stock": 150
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 18,
+  "fields": {
+    "product": 30,
+    "size": "L",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 19,
+  "fields": {
+    "product": 30,
+    "size": "XL",
+    "stock": 49
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 20,
+  "fields": {
+    "product": 30,
+    "size": "XXL",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 21,
+  "fields": {
+    "product": 31,
+    "size": "M",
+    "stock": 300
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 22,
+  "fields": {
+    "product": 31,
+    "size": "L",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 23,
+  "fields": {
+    "product": 31,
+    "size": "XL",
+    "stock": 200
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 24,
+  "fields": {
+    "product": 31,
+    "size": "XXL",
+    "stock": 185
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 25,
+  "fields": {
+    "product": 32,
+    "size": "M",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 26,
+  "fields": {
+    "product": 32,
+    "size": "L",
+    "stock": 253
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 27,
+  "fields": {
+    "product": 32,
+    "size": "XL",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 28,
+  "fields": {
+    "product": 32,
+    "size": "XXL",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 29,
+  "fields": {
+    "product": 33,
+    "size": "M",
+    "stock": 97
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 30,
+  "fields": {
+    "product": 33,
+    "size": "L",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 31,
+  "fields": {
+    "product": 33,
+    "size": "XL",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 32,
+  "fields": {
+    "product": 33,
+    "size": "XXL",
+    "stock": 49
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 33,
+  "fields": {
+    "product": 34,
+    "size": "M",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 34,
+  "fields": {
+    "product": 34,
+    "size": "L",
+    "stock": 200
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 35,
+  "fields": {
+    "product": 34,
+    "size": "XL",
+    "stock": 100
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 36,
+  "fields": {
+    "product": 34,
+    "size": "XXL",
+    "stock": 64
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 37,
+  "fields": {
+    "product": 35,
+    "size": "M",
+    "stock": 64
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 38,
+  "fields": {
+    "product": 35,
+    "size": "L",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 39,
+  "fields": {
+    "product": 35,
+    "size": "XL",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 40,
+  "fields": {
+    "product": 35,
+    "size": "XXL",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 41,
+  "fields": {
+    "product": 36,
+    "size": "M",
+    "stock": 50
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 42,
+  "fields": {
+    "product": 36,
+    "size": "L",
+    "stock": 37
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 43,
+  "fields": {
+    "product": 36,
+    "size": "XL",
+    "stock": 0
+  }
+},
+{
+  "model": "products.productsize",
+  "pk": 44,
+  "fields": {
+    "product": 36,
+    "size": "XXL",
+    "stock": 0
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "priyanshu_patidar"
+    ],
+    "phone": "8602558403",
+    "address": "pritamnagar",
+    "city": "ratlam",
+    "pincode": "457001"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "uday_rathore"
+    ],
+    "phone": "",
+    "address": "",
+    "city": "",
+    "pincode": ""
+  }
+}
+]
