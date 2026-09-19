@@ -137,13 +137,8 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 if os.environ.get('CLOUDINARY_CLOUD_NAME'):
-    INSTALLED_APPS.insert(
-        INSTALLED_APPS.index('django.contrib.staticfiles'),
-        'cloudinary_storage',
-    )
-    INSTALLED_APPS.append('cloudinary')
+    INSTALLED_APPS += ['cloudinary_storage', 'cloudinary']
 
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
